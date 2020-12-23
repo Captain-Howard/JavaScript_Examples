@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>howa811</title>
+  		  <meta charset="utf-8" />
+    </head>
+    <body>
+        <script type="text/javascript">
+
+			function bynamerev(a,b) {
+				return ((a[0] < b[0]) ? 1 : ((a[0] > b[0]) ? -1 : 0));
+			}
+			function bynum(a,b) {
+   				return(a[1] - b[1]);
+          }
+
+			function bynumrev(a,b) {
+   				return(b[1] - a[1]);
+          }
+
+
+
+            document.writeln("<h1>Howa811<h1>");
+            
+            var data1 = [
+            				["Bob",355],
+            				["Carol",655],
+            				["Ted",92],
+            				["Alice",320],
+            				["Al",356],
+            				["Carolyn",92]
+            				];
+            
+            // display array
+            document.write("<p>");
+            var len = data1.length;
+            document.write("<table>");
+            for (var count = 0; count < len; count++){
+                document.write("<tr><td>"+data1[count][0] + "</td><td>" + data1[count][1] + "</td></tr>")
+                };
+            document.write("</table>");    
+            document.writeln("</p>");
+            
+            
+            var sortorder = prompt("Sort by (F)irstname or (N)umber","");
+            
+				sortorder.toLowerCase();
+				
+				var direction = prompt("(S)mallest first or (B)iggest first");
+				direction.toLowerCase();
+				var valid = true;
+						
+				if (sortorder == "f")
+				{
+					if(direction == "b")
+						data1.sort(bynamerev);
+					else
+						data1.sort();				
+				}
+				else if (sortorder == "n")
+				{
+					if(direction =="b")					
+						data1.sort(bynumrev);
+					else
+						data1.sort(bynum);
+				}
+				else 
+				{
+					alert("Invalid sort type selected");
+					valid = false;
+				}            
+            
+            if (valid)
+            {
+            	document.writeln("<h3>Sorted Array</h3>");
+            	document.write("<p>");
+            	document.write("<table>");
+            	for (count = 0; count < len; count++)
+						document.write("<tr><td>"+data1[count][0] + "</td><td>" + data1[count][1] + "</tr>");
+					document.write("</table>");
+
+            }
+            
+            document.close();
+ 
+        </script>
+    </body>
+</html>

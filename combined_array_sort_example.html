@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>howa821</title>
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<script type="text/javascript">
+			var nameArray = new Array();
+			var ageArray = new Array();
+			var combinedArray = new Array();			
+			var name1;
+			
+			function f1(){
+				name1 = prompt("Enter name('END' to quit): ");								
+				while (name1 != "END") {
+					nameArray.push(name1);
+					name1 = prompt("Enter name('END' to quit): ");
+				}	
+				f2();
+			}	
+			
+			function f2(){
+				for (count = 0; count < nameArray.length; count++) {
+					var val = prompt("Enter an age for " + nameArray[count] + ":");
+					ageArray[count] = val;
+				}
+				f3();
+			}
+			
+			function f3(){
+				for (count = 0; count < nameArray.length; count++) {
+					combinedArray[count] = new Array();
+					combinedArray[count][0] = nameArray[count];
+					combinedArray[count][1] = ageArray[count];
+				}
+			}
+			function f5(a, b) {
+				return (a[1] - b[1]);
+			}
+			
+			function f4(a,b){
+					return (b[1]-a[1]);
+			}
+			
+			function num() {
+				combinedArray.sort(f5);
+				var stuff = "<tr></tr>";
+				for (count = 0; count < nameArray.length; count++) {
+					var stuff1 = ("<tr><td>" + combinedArray[count][0] + "</td><td>" + combinedArray[count][1] + "</td></tr>")
+					stuff += stuff1;					
+					document.getElementById("output").innerHTML = stuff;
+				}
+			}			
+			
+			
+			function numrev() {
+				combinedArray.sort(f4);
+				var stuff = "<tr></tr>";
+				for (count = 0; count < nameArray.length; count++) {
+					var stuff1 = ("<tr><td>" + combinedArray[count][0] + "</td><td>" + combinedArray[count][1] + "</td></tr>")
+					stuff += stuff1;					
+					document.getElementById("output").innerHTML = stuff;
+				}
+			}			
+		
+			function namer() {
+				combinedArray.sort();				
+				var stuff = "<tr></tr>";
+				for (count = 0; count < nameArray.length; count++) {
+					var stuff1 = ("<tr><td>" + combinedArray[count][0] + "</td><td>" + combinedArray[count][1] + "</td></tr>")
+					stuff += stuff1;					
+					document.getElementById("output").innerHTML = stuff;
+				}
+			}
+			
+		</script>
+		
+		<input type="button" value="StartSequence" onclick="f1()" />	
+		<button onclick="namer()">Sort by Name</button>
+		<button onclick="num()">Sort by Age(ascending)</button>
+		<button onclick="numrev()">Sort by Age(descending)</button>
+		<table id="output"></table>
+	</body>
+</html>

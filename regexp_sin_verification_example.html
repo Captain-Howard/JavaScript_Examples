@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>howa831</title>
+			<meta name="generator" content="Bluefish 2.2.9" >
+			<meta name="author" content="Unknown" >
+			<meta name="date" content="2017-04-04T20:44:53-0600" >
+			<meta name="copyright" content="">
+			<meta name="keywords" content="">
+			<meta name="description" content="">
+			<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+			<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+			<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+			<meta http-equiv="content-style-type" content="text/css">
+			<meta http-equiv="expires" content="0">
+		</head>
+	<body>
+		<button onclick="enterSIN()">Enter SIN</button>
+		<p id="error"></p>
+		<button onclick="verifySIN()">Verify SIN</button>
+		<script type="text/javascript" >
+			var sin;		
+			var sinArray = new Array();	
+			function enterSIN() {
+				sin = prompt("Please enter SIN number to verify: ");
+				var reg = new RegExp("^[0-9]{3} [0-9]{3} [0-9]{3}$");
+				if (reg.test(sin)) {
+					var stuff = ("You entered a valid SIN format of " + sin);
+					document.getElementById("error").innerHTML = stuff;
+				}
+				else {
+					var stuff = "Please enter a valid SIN number format(xxx xxx xxx)";
+					document.getElementById("error").innerHTML = stuff;
+				}
+			}
+			
+			function verifySIN() {
+				for (count = 0; count < sin.length; count++) {
+					sinArray[count] = parseInt(sin.charAt(count));
+				}
+				var shit = "<p></p>";				
+				for (count = 0; count < sinArray.length; count++) {
+					shit += ("<p>" + sinArray[count] + "</p>");
+					document.getElementById("error").innerHTML = shit;
+				}
+				var val = new Array(1,4,6,9);
+				for (count = 0; count < val.length; count++) {
+					sinArray[val[count]] *= 2;
+					if (sinArray[val[count]] > 9) {
+						sinArray[val[count]] -= 9;
+					}
+				}
+				var total_val = 0;
+				var val1 = new Array(0,1,2,4,5,6,8,9,10);
+				for (count = 0; count < val1.length; count++) {
+					total_val += sinArray[val1[count]];
+				} 				
+				var remainder = total_val % 10;
+				if (remainder) {
+					document.getElementById("error").innerHTML = "Not a valid SIN number";
+				}
+				else {
+					document.getElementById("error").innerHTML = (sin + " is a valid number!");
+				}
+			}
+			
+		</script>
+	</body>
+</html>

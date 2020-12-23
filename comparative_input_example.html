@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible">
+        <title>COMP208</title>
+        <meta name="description" content="COMP208">
+    </head>
+    <body>
+        <h1>Number Guessing Game!</h1>
+            <p>Your guess (1-10): <input input="text" id="guess"/><br/></p>
+        <button onclick="submit()" id="button">Submit Guess</button>
+        <p id="winlose"></p>
+        <script language="javascript">
+            function submit(){
+                var setValue = 9;
+                var value = document.getElementById("guess").value;
+                
+                if(value != setValue){
+                    alert("Your guess of " + value + " was incorrect.");
+                }
+                else{
+                    document.getElementById("button").disabled = true;
+                    document.getElementById("button").innerHTML = "You won."
+                }
+            }
+        </script>
+    </body>
+</html>

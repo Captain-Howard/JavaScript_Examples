@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	  
+        <title>howa721</title>
+		  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		  	     		    		
+        <script type="text/javascript">
+            var bob = new Array();
+            function enterdata(){
+                var row=0;
+                var col=0;
+				var day;
+				var num;
+                var end = "END";
+                
+				day = prompt("Student Name: (END to quit)?");
+                
+                for(row = 0; day != end; row++){
+                    bob[row] = new Array();
+					bob[row][0]=day;
+					num = prompt("Mark in Physics: ");
+					bob[row][1]=num;
+					num = prompt("Mark in Calculus: ");
+					bob[row][2]=num;
+					num = prompt("Mark in Statistics: ");
+					bob[row][3]=num;                    
+					day = prompt("Student Name: (END to quit)?");				
+				}
+			}
+			function display(){
+				var row=0;
+				var col=0;
+                var totaloutput="<table>";
+				for (row=0;row < bob.length;row++){
+                    var val = 0;
+                    val = (bob[row][1] * 1 + bob[row][2] * 1 + bob[row][3] * 1) * 1 / 3;
+                    
+					totaloutput=totaloutput+"<tr><td>"+bob[row][0]+"</td><td>"+ val +"</td></tr>";
+					
+				}
+				totaloutput=totaloutput+"</table>";
+				document.getElementById('results').innerHTML=totaloutput;			
+			}
+		</script>
+
+    </head>
+    <body>
+    		<h2>Class Statistics</h2>
+    		<p>Javascript array that holds student names and marks for three classes. Program prompts user for the name and then the marks for as many students as they want. User entry ends when a student name of END is entered. The program will then calculate the average of each student and display a list of student names and averages.    		
+    		</p>
+    		<div>
+					<input type="button" value="Click to Enter Data" onclick="enterdata()" />
+					<input type="button" value="Click to Display" onclick="display()" />    		
+    		</div>
+    		<h2>Results</h2>
+    		<p id="results"></p>
+
+     </body>
+</html>

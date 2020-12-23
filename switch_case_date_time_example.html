@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible">
+        <title>COMP208</title>
+        <meta name="description" content="COMP208">
+    </head>
+    <body>
+        <h1>Austin Howard</h1>
+        <p id="date"></p>
+        <p id="time"></p>
+        <script language="javascript">
+            var setRefresh = setInterval(date, 100);
+            function date(){
+                var today = new Date();
+                var year = today.getFullYear();
+                var tmonth = today.getMonth();
+                var day = today.getDate();
+                var tdayofweek = today.getDay();
+                var month;
+                var dayofweek;
+                
+                switch(tmonth){
+                    case 0:
+                        month = "January";
+                        break;
+                    case 1:
+                        month = "February";
+                        break;
+                    case 2:
+                        month = "March";
+                        break;
+                    case 3:
+                        month = "April";
+                        break;
+                    case 4:
+                        month = "May";
+                        break;
+                    case 5:
+                        month = "June";
+                        break;
+                    case 6:
+                        month = "July";
+                        break;
+                    case 7:
+                        month = "August";
+                        break;
+                    case 8:
+                        month = "September";
+                        break;
+                    case 9:
+                        month = "October";
+                        break;
+                    case 10:
+                        month = "November";
+                        break;
+                    case 11:
+                        month = "December";
+                        break;
+                }
+                switch(tdayofweek){
+                    case 0:
+                        dayofweek = "Sunday"
+                        break;
+                    case 1:
+                        dayofweek = "Monday";
+                        break;
+                    case 2:
+                        dayofweek = "Tuesday";
+                        break;
+                    case 3:
+                        dayofweek = "Wednesday";
+                        break;
+                    case 4:
+                        dayofweek = "Thursday";
+                        break;
+                    case 5:
+                        dayofweek = "Friday";
+                        break;
+                    case 6:
+                        dayofweek = "Saturday";
+                        break;
+                }
+                document.getElementById("date").innerHTML = "Current Date: " + dayofweek + ", " + month + ", " + day + ", " + year;
+                
+                var thours = today.getHours();
+                var minutes = today.getMinutes();
+                var seconds = today.getSeconds();
+                var hours;
+                var ampm;
+                
+                if(thours > 11 && thours != 24){
+                    ampm = "pm";
+                }
+                else{
+                    ampm = "am";
+                }
+                
+                if(thours > 12){
+                    hours = thours - 12;
+                }
+                else{
+                    hours = thours;
+                }
+                document.getElementById("time").innerHTML = "Current Time: " + hours + ":" + minutes + ":" + seconds + " " + ampm;
+                
+            }
+        </script>
+    </body>
+</html>
